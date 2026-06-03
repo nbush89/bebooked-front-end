@@ -6,6 +6,9 @@
   --warm-linen: #ede8e0;
   --brand-stone: #d8d0c4;
   --muted: #888888;
+  --accent: #5c7050;
+  /* accessible warm gray — 6.3:1 on warm-cream, passes WCAG AA */
+  --warm-gray: #5a5a56;
 }
 
 @theme inline {
@@ -14,6 +17,8 @@
   --color-warm-linen: var(--warm-linen);
   --color-brand-stone: var(--brand-stone);
   --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-warm-gray: var(--warm-gray);
   --font-sans: var(--font-jost);
 }
 
@@ -29,3 +34,4 @@ body {
   outline: 2px solid var(--near-black);
   outline-offset: 2px;
 }
+

@@ -19,17 +19,27 @@ export async function POST(req: NextRequest) {
       VALUES (${name}, ${email})
       ON CONFLICT (email) DO NOTHING
     `;
+  } catch (err) {
+    console.error("DB error:", err);
+    return NextResponse.json({ error: "Database error" }, { status: 500 });
+  }
 
-    await resend.emails.send({
-      from: "Bebooked <noreply@bebookedtoday.com>",
+  try {
+    const { error } = await resend.emails.send({
+      from: "Bebooked <onboarding@resend.dev>", // TODO: swap to noreply@bebookedtoday.com after domain verification
       to: process.env.NOTIFY_EMAIL!,
       subject: `New waitlist signup: ${name}`,
       text: `${name} (${email}) joined the Bebooked waitlist.`,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend error:", error);
+      // DB insert succeeded — still return success to the user,
+      // but log so we know the notification didn't fire
+    }
   } catch (err) {
-    console.error("Waitlist error:", err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    console.error("Resend exception:", err);
   }
+
+  return NextResponse.json({ success: true });
 }
