@@ -114,7 +114,7 @@ export default function Home() {
           Bebooked turns last-minute openings into booked appointments — post a
           slot, share your link, fill the chair in 30 seconds. At $35 a month,
           your first booking covers it. Every slot after that is revenue you
-          kept. Works alongside Vagaro, Booksy, and Square.
+          kept.
         </p>
         <div className="flex flex-wrap items-center gap-2 mt-6">
           <span className="text-xs tracking-[0.1em] uppercase text-near-black font-light mr-2">
