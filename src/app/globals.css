@@ -1,24 +1,163 @@
 @import "tailwindcss";
 
 :root {
-  --near-black: #1a1209;
-  --warm-cream: #faf8f3;
-  --warm-linen: #ede8e0;
-  --brand-stone: #d8d0c4;
-  --muted: #888888;
-  --accent: #5c7050;
-  /* accessible warm gray — 6.3:1 on warm-cream, passes WCAG AA */
-  --warm-gray: #5a5a56;
+  /* ── Base palette ── */
+  --near-black:     #1a1209;
+  --warm-cream:     #faf8f3;
+  --warm-linen:     #ede8e0;
+  --stone:          #d8d0c4;
+  --brand-stone:    var(--stone);  /* alias — used by landing page */
+  --muted:          #888888;
+  --sage:           #5c7050;
+  --accent:         var(--sage);   /* alias — used by landing page */
+
+  /* ── Extended neutrals ── */
+  --warm-gray:        #5a5a56;    /* 6.3:1 on warm-cream — passes WCAG AA */
+  --linen-deep:       #e3ddd2;    /* pressed/hovered linen surface */
+  --cream-raised:     #fffdf8;    /* lifted card on cream page */
+  --near-black-80:    #3a3026;    /* hover on cream */
+  --hairline:         rgba(26, 18, 9, 0.10);
+  --hairline-inverse: rgba(216, 208, 196, 0.18);
+
+  /* ── Accent variants ── */
+  --sage-deep: #4a5b40;
+  --sage-soft: #eaeee6;
+
+  /* ── Semantic feedback ── */
+  --success:      #5c7050;
+  --success-soft: #eaeee6;
+  --danger:       #a4462f;   /* warm terracotta */
+  --danger-soft:  #f4e4de;
+
+  /* ── Semantic aliases (use these in components, not raw palette) ── */
+
+  /* Text */
+  --text-primary:     var(--near-black);
+  --text-secondary:   var(--warm-gray);
+  --text-muted:       var(--muted);
+  --text-on-dark:     var(--warm-cream);
+  --text-on-dark-dim: var(--stone);
+  --text-accent:      var(--sage);
+
+  /* Surfaces */
+  --surface-page:    var(--warm-cream);
+  --surface-card:    var(--warm-linen);
+  --surface-raised:  var(--cream-raised);
+  --surface-inverse: var(--near-black);
+  --surface-sage:    var(--sage-soft);
+
+  /* Borders */
+  --border-default: var(--stone);
+  --border-strong:  var(--near-black);
+  --border-on-dark: var(--hairline-inverse);
+  --divider:        var(--hairline);
+
+  /* Interactive — dark filled CTA (brand default) */
+  --cta-bg:       var(--near-black);
+  --cta-bg-hover: var(--near-black-80);
+  --cta-text:     var(--warm-cream);
+
+  /* Interactive — sage accent CTA */
+  --accent-bg:       var(--sage);
+  --accent-bg-hover: var(--sage-deep);
+  --accent-text:     var(--warm-cream);
+
+  /* Focus */
+  --focus-ring: var(--near-black);
+
+  /* ── Typography tokens ── */
+  --font-sans:      'Jost', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  --size-caption:  12px;
+  --size-small:    14px;
+  --size-body:     16px;
+  --size-body-lg:  18px;
+  --size-subhead:  20px;
+  --size-title:    28px;
+  --size-title-lg: 36px;
+  --size-headline: 52px;
+  --size-display:  72px;
+
+  --leading-tight:   1.05;
+  --leading-snug:    1.2;
+  --leading-normal:  1.4;
+  --leading-relaxed: 1.6;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.06em;
+  --tracking-wider:   0.12em;
+  --tracking-widest:  0.18em;
+
+  /* ── Spacing tokens (4px grid) ── */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --gutter:      24px;
+  --gutter-lg:   32px;
+  --content-max: 1120px;
+  --reading-max: 560px;
+  --app-max:     420px;
+
+  /* ── Effects — radii, borders, shadows, motion ── */
+
+  /* Two radius worlds: editorial sharp (0) and soft app surfaces */
+  --radius-none: 0px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   22px;
+  --radius-xl:   32px;
+  --radius-pill: 999px;
+
+  --border-hairline: 1px;
+  --border-regular:  1.5px;
+
+  /* Shadows — warm-tinted, low, soft, rare */
+  --shadow-none: none;
+  --shadow-sm:   0 1px 2px rgba(26, 18, 9, 0.05);
+  --shadow-md:   0 6px 20px rgba(26, 18, 9, 0.08);
+  --shadow-lg:   0 18px 50px rgba(26, 18, 9, 0.12);
+
+  /* Motion — calm, no bounce */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:      120ms;
+  --dur-normal:    200ms;
+  --dur-slow:      320ms;
+  --hover-opacity: 0.82;
 }
 
 @theme inline {
-  --color-near-black: var(--near-black);
-  --color-warm-cream: var(--warm-cream);
-  --color-warm-linen: var(--warm-linen);
-  --color-brand-stone: var(--brand-stone);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-warm-gray: var(--warm-gray);
+  --color-near-black:  var(--near-black);
+  --color-warm-cream:  var(--warm-cream);
+  --color-warm-linen:  var(--warm-linen);
+  --color-stone:       var(--stone);
+  --color-brand-stone: var(--stone);
+  --color-muted:       var(--muted);
+  --color-sage:        var(--sage);
+  --color-accent:      var(--sage);
+  --color-sage-deep:   var(--sage-deep);
+  --color-sage-soft:   var(--sage-soft);
+  --color-warm-gray:   var(--warm-gray);
+  --color-linen-deep:  var(--linen-deep);
+  --color-danger:      var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
   --font-sans: var(--font-jost);
 }
 
@@ -34,4 +173,3 @@ body {
   outline: 2px solid var(--near-black);
   outline-offset: 2px;
 }
-
