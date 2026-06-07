@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const jost = Jost({
@@ -10,15 +11,15 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Bebooked — Your calendar, fully loaded.",
+  title: "BeBooked — Your calendar, fully loaded.",
   description:
-    "Bebooked helps beauty professionals in Charlotte, NC fill last-minute openings. Post a slot, share a link, get booked.",
+    "BeBooked helps beauty professionals in Charlotte, NC fill last-minute openings. Post a slot, share a link, get booked.",
   openGraph: {
-    title: "Bebooked — Your calendar, fully loaded.",
+    title: "BeBooked — Your calendar, fully loaded.",
     description:
       "Fill your last-minute openings. Post a slot, share your link, get booked. Launching in Charlotte, NC.",
     url: "https://bebookedtoday.com",
-    siteName: "Bebooked",
+    siteName: "BeBooked",
     locale: "en_US",
     type: "website",
   },
@@ -30,8 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jost.variable}>
-      <body className="min-h-screen">{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={jost.variable}>
+        <body className="min-h-screen">{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }

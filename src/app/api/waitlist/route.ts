@@ -26,10 +26,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const { error } = await resend.emails.send({
-      from: "Bebooked <onboarding@resend.dev>", // TODO: swap to noreply@bebookedtoday.com after domain verification
+      from: "BeBooked <onboarding@resend.dev>", // TODO: swap to noreply@bebookedtoday.com after domain verification
       to: process.env.NOTIFY_EMAIL!,
       subject: `New waitlist signup: ${name}`,
-      text: `${name} (${email}) joined the Bebooked waitlist.`,
+      text: `${name} (${email}) joined the BeBooked waitlist.`,
     });
 
     if (error) {
