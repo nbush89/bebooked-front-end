@@ -44,16 +44,6 @@ export default function SignInPage() {
       </div>
 
       <SignIn
-        localization={{
-          signIn: {
-            start: {
-              title: "Welcome back",
-              subtitle: "Sign in to manage your slots.",
-              actionText: "New to Bebooked?",
-              actionLink: "Create your profile",
-            },
-          },
-        }}
         appearance={{
           variables: {
             colorPrimary:                 brand.nearBlack,
