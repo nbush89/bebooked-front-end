@@ -50,11 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      localization={clerkLocalization}
-      signUpForceRedirectUrl="/dashboard/setup"
-      signInForceRedirectUrl="/dashboard"
-    >
+    <ClerkProvider localization={clerkLocalization}>
       <html lang="en" className={jost.variable}>
         <body className="min-h-screen">{children}</body>
       </html>
