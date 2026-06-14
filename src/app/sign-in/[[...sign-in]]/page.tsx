@@ -44,6 +44,7 @@ export default function SignInPage() {
       </div>
 
       <SignIn
+        forceRedirectUrl="/dashboard"
         appearance={{
           variables: {
             colorPrimary:                 brand.nearBlack,

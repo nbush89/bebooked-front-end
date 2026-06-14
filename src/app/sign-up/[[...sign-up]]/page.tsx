@@ -42,6 +42,7 @@ export default function SignUpPage() {
       </div>
 
       <SignUp
+        forceRedirectUrl="/dashboard/setup"
         appearance={{
           variables: {
             colorPrimary:                 brand.nearBlack,
