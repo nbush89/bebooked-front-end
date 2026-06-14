@@ -1,9 +1,13 @@
 /**
  * Full base URL for the app (no trailing slash).
- * Set NEXT_PUBLIC_APP_URL in your env to override.
+ * Always set NEXT_PUBLIC_APP_URL in your deployment environment.
  *
- * .env.local  → NEXT_PUBLIC_APP_URL=http://localhost:3000
- * Cloudflare  → NEXT_PUBLIC_APP_URL=https://bebookedtoday.com
+ * .env.local (local machine) → NEXT_PUBLIC_APP_URL=http://localhost:3000
+ * Dev deployment             → NEXT_PUBLIC_APP_URL=https://dev.bebookedtoday.com
+ * Production                 → NEXT_PUBLIC_APP_URL=https://bebookedtoday.com
+ *
+ * The NODE_ENV fallback below only fires if the var is missing entirely,
+ * which in practice only happens when running `next dev` locally.
  */
 export const APP_URL: string =
   process.env.NEXT_PUBLIC_APP_URL ??
